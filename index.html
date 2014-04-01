@@ -150,11 +150,20 @@
 </script>
 
 <script type="text/javascript">
-	setTimeout(function(){
-		$(".twitter-share-button , .twitter-follow-button").each(function(){
-			this.src=this.src.replace(/http:/,"https:");
-		});
-	},1000);
+	$(function(){
+		ht = /http:/;
+		$(document).on("click","iframe , input",function() {
+    		$("iframe.twitter-share-button , iframe.twitter-follow-button").each(function() {
+
+				if(ht.test(this.src)){
+					this.src = this.src.replace(/http:/, "https:");
+					console.log(this.src);
+				}
+				
+		    });
+		})
+	});
+	
 	
 </script>
 
